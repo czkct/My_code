@@ -1,0 +1,119 @@
+import java.awt.Color;
+import java.awt.FlowLayout;//布局是在awt中的！！！
+import java.awt.Graphics;
+import java.awt.event.*;
+
+import javax.swing.*;
+import java.awt.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class TankClient extends JFrame{
+	public static int GAME_WIDTH;   //游戏窗口宽度
+	public static int GAME_HEIGHT;  //游戏窗口高度
+	
+	
+	List<Boom> booms = new ArrayList<Boom>();   //爆炸集合
+	List<Tank> tanks = new ArrayList<Tank>();   //敌方坦克集合
+	List<Missile> missiles = new ArrayList<Missile>();   //子弹集合
+	
+	public TankClient(){}   //坦克端构造函数
+	public TankClient(String s, int x, int y, int w, int h){  //坦克端构造函数
+		init(s, x, y, w, h);   //初始化游戏窗口名字、窗口位置、窗口宽度和高度
+		GAME_WIDTH = w;
+		GAME_HEIGHT = h;
+	}
+	Tank myTank = new Tank(50, 50, true,Tank.Direction.STOP, this);
+//	Tank enemTank = new Tank(50, 50, false, this);
+	
+	
+	
+	
+	//-------------------------------
+	Image offScreenImage = null;
+	public void update(Graphics g) {  //屏幕画笔g
+		super.update(g);
+		if(offScreenImage == null) { 
+			offScreenImage = this.createImage(500, 600);
+			//大小就应该设置为要覆盖的大小
+		}
+		 //幕后画笔gOffScreen
+		Graphics gOffScreen = offScreenImage.getGraphics();
+		paint(gOffScreen);
+		g.drawImage(offScreenImage, 0, 0, null);
+	}
+	//------------------------------//窗口绘画
+	public void paint(Graphics g) {
+		super.paint(g);
+		
+		//炮弹个数
+		g.drawString("missiles.count"+missiles.size(), 10, 50);
+		g.drawString("booms count"+booms.size(), 10, 70);
+		g.drawString("tanks count"+tanks.size(), 10, 90);
+		
+		for(int i = 0; i < missiles.size();i++){
+			Missile m = missiles.get(i);
+			m.hitTanks(tanks);
+			m.draw(g);
+		}//画出所有的子弹
+		
+		for(int i = 0; i< booms.size(); i++){
+			Boom bm = booms.get(i);
+			bm.draw(g);
+		}//画出所有的爆炸
+		
+		for(int i = 0; i < tanks.size(); i++){
+//			Tank t = tanks.get(i);
+//			t.draw(g);
+			tanks.get(i).draw(g);
+		}//画出所有的敌对坦克
+		
+		myTank.draw(g);
+	//	enemTank.draw(g);
+	}
+	//------------------------------窗口初始化
+	public void init(String s, int x, int y, int w, int h){
+		for(int i = 0; i < 10; i++) {
+			tanks.add(new Tank(50+40*(i+1), 50, false, Tank.Direction.D, this));
+		}
+		
+		setTitle(s);
+		setVisible(true);
+		setResizable(false);
+		setLocation(x, y);
+		setSize(w, h);
+		setLayout(new FlowLayout());
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		getContentPane().setVisible(false);
+		setBackground(Color.GRAY);
+		
+		this.addKeyListener(new KeyMonitor());
+		
+		new Thread(new PaintThread()).start();
+	}
+	//----------------------------内部类
+	private class PaintThread implements Runnable{
+		public void run() {
+			while(true) {
+				repaint();
+				try {
+					Thread.sleep(50);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+
+	private class KeyMonitor extends KeyAdapter {
+		public void keyPressed(KeyEvent e) {
+			myTank._KeyPressed(e);
+		}
+		public void keyReleased(KeyEvent e) {
+			myTank._KeyReleased(e);
+		}
+	}
+}

@@ -1,0 +1,5 @@
+import java.awt.*;
+public class Wall {
+	int x, y, w, h;   //墙的位置  宽度  高度
+	TankClient tc;    //保留一个坦克端的引用
+}
