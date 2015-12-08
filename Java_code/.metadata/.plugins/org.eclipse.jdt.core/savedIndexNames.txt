@@ -1,1 +1,1 @@
-INDEX VERSION 1.126+C:\Users\acer_\Documents\Workspaces\MyEclipse 10\.metadata\.plugins\org.eclipse.jdt.core
+INDEX VERSION 1.126+F:\My_code\Java_code\.metadata\.plugins\org.eclipse.jdt.core
