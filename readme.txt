@@ -1,1 +1,1 @@
-We are the wo
+We are the world£¡
