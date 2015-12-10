@@ -11,7 +11,12 @@ import javax.swing.text.BadLocationException;
  * @author  __USER__
  */
 public class Calcu extends javax.swing.JFrame {
-	String num1;
+	//flag 是按键标志变量   str1 是第一个运算数
+	//key是按键变量
+	int num1, num2;
+	String str1, str2;
+	boolean flag = false;
+	String key = null;
 
 	/** Creates new form Calcu */
 	public Calcu() {
@@ -75,6 +80,11 @@ public class Calcu extends javax.swing.JFrame {
 		jButton3.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 10));
 		jButton3.setText("+");
 		jButton3.setFocusPainted(false);
+		jButton3.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jButton3ActionPerformed(evt);
+			}
+		});
 
 		jButton4.setText("1");
 		jButton4.setFocusPainted(false);
@@ -102,6 +112,11 @@ public class Calcu extends javax.swing.JFrame {
 
 		jButton7.setText("-");
 		jButton7.setFocusPainted(false);
+		jButton7.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jButton7ActionPerformed(evt);
+			}
+		});
 
 		jButton8.setText("4");
 		jButton8.setFocusPainted(false);
@@ -161,6 +176,11 @@ public class Calcu extends javax.swing.JFrame {
 
 		jButton15.setText("/");
 		jButton15.setFocusPainted(false);
+		jButton15.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jButton15ActionPerformed(evt);
+			}
+		});
 
 		jButton16.setText("CE");
 		jButton16.setFocusPainted(false);
@@ -185,6 +205,11 @@ public class Calcu extends javax.swing.JFrame {
 
 		jButton18.setText("\u00f7");
 		jButton18.setFocusPainted(false);
+		jButton18.addActionListener(new java.awt.event.ActionListener() {
+			public void actionPerformed(java.awt.event.ActionEvent evt) {
+				jButton18ActionPerformed(evt);
+			}
+		});
 
 		jButton19.setText("\u221a");
 		jButton19.setFocusPainted(false);
@@ -559,8 +584,39 @@ public class Calcu extends javax.swing.JFrame {
 	}// </editor-fold>
 	//GEN-END:initComponents
 
-	private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
+	private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {
+		str1 = jTextField1.getText();
+		num1 = Integer.parseInt(str1);
+		key = "÷";
+		jTextField1.setText("");
+	}
 
+	private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {
+		str1 = jTextField1.getText();
+		num1 = Integer.parseInt(str1);
+		key = "/";
+		jTextField1.setText("");
+	}
+
+	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
+		str1 = jTextField1.getText();
+		num1 = Integer.parseInt(str1);
+		key = "+";
+		jTextField1.setText("");
+	}
+
+	private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
+		str1 = jTextField1.getText();
+		num1 = Integer.parseInt(str1);
+		key = "-";
+		jTextField1.setText("");
+	}
+
+	private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
+		str1 = jTextField1.getText();
+		num1 = Integer.parseInt(str1);
+		key = "*";
+		jTextField1.setText("");
 	}
 
 	private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {
@@ -617,7 +673,16 @@ public class Calcu extends javax.swing.JFrame {
 	}
 
 	private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {
-		// TODO add your handling code here:
+		str2 = jTextField1.getText();
+		num2 = Integer.parseInt(str2);
+		char[] a = key.toCharArray();
+		switch(a[0]){
+		case '+':jTextField1.setText(String.valueOf(num1+num2));
+		case '-':jTextField1.setText(String.valueOf(num1-num2));
+		case '*':jTextField1.setText(String.valueOf(num1*num2));
+		case '/':jTextField1.setText(String.valueOf(num1/num2));
+		//case "+":jTextField1.setText(String.valueOf(num1+num2));
+		}
 	}
 
 	private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
