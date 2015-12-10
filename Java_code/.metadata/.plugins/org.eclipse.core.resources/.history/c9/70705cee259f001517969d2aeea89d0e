@@ -1,0 +1,13 @@
+import java.awt.event.*;
+import java.io.*;
+public class ReaderListen implements ActionListener{
+	pulbic void actionPerformed(ActionEvent e) {
+		String fileName = e.getActionCommand();
+		System.out.println(fileName + "ÄÚÈÝÈçÏÂ£º");
+		try{
+			File file = new File(fileName);
+			FileReader inOne = new FileReader(file);
+			
+		}
+	}
+}

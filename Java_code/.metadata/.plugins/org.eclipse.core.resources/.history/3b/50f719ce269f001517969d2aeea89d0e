@@ -1,0 +1,22 @@
+import java.awt.event.*;
+import java.io.*;
+public class ReaderListen implements ActionListener{
+	public void actionPerformed(ActionEvent e) {
+		String fileName = e.getActionCommand();
+		System.out.println(fileName + "内容如下：");
+		try{
+			File file = new File("F:/My_code/Java_code/ActionEvent事件/src/"+fileName);
+			FileReader inOne = new FileReader(file);
+			BufferedReader inTwo = new BufferedReader(inOne);
+			String s = null;
+			while((s=inTwo.readLine())!=null) {
+				System.out.println(s);
+			}
+			inOne.close();
+			inTwo.close();
+		}
+		catch(Exception ee){
+			System.out.println(ee.toString());
+		}
+	}
+}

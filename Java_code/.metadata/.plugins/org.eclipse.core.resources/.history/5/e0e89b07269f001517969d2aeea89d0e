@@ -1,0 +1,22 @@
+import java.awt.event.*;
+import java.io.*;
+public class ReaderListen implements ActionListener{
+	pulbic void actionPerformed(ActionEvent e) {
+		String fileName = e.getActionCommand();
+		System.out.println(fileName + "ÄÚÈÝÈçÏÂ£º");
+		try{
+			File file = new File(fileName);
+			FileReader inOne = new FileReader(file);
+			BufferedReader inTwo = new BufferedReader(inOne);
+			String s = null;
+			while((s=inTwo.readLine())!=null) {
+				System.out.println(s);
+			}
+			inOne.close();
+			inTwo.close();
+		}
+		catch(Exception ee){
+			System.out.println(ee.toString());
+		}
+	}
+}
