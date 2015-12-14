@@ -638,20 +638,16 @@ public class Calcu extends javax.swing.JFrame {
 	//"回退"
 	private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {
 		try {
-			if(!flag)
 			jTextField1.setText(jTextField1.getText(0, jTextField1.getText()
 					.length() - 1));
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
 	}
-//"."
+
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
-		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
 		}
 		jTextField1.setText(jTextField1.getText() + jButton2.getText());
 	}
@@ -659,43 +655,31 @@ public class Calcu extends javax.swing.JFrame {
 	private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {
 		jTextField1.setText("");
 	}
-//"9"
+
 	private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
-		}
 		jTextField1.setText(jTextField1.getText() + jButton14.getText());
 	}
-//"8"
+
 	private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
-		}
 		jTextField1.setText(jTextField1.getText() + jButton13.getText());
 	}
 //"7"
-	private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
+			if(hs_count) {
+				hs_count = false; jTextField1.setText(null);
+			}
+			jTextField1.setText(jTextField1.getText() + jButton12.getText());
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
-		}
-		jTextField1.setText(jTextField1.getText() + jButton12.getText());
-	}
 //"6"
 	private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
-		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
 		}
 		jTextField1.setText(jTextField1.getText() + jButton10.getText());
 	}
@@ -704,18 +688,12 @@ public class Calcu extends javax.swing.JFrame {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
-		}
 		jTextField1.setText(jTextField1.getText() + jButton9.getText());
 	}
 //"4"
 	private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
-		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
 		}
 		jTextField1.setText(jTextField1.getText() + jButton8.getText());
 	}
@@ -724,18 +702,12 @@ public class Calcu extends javax.swing.JFrame {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
-		}
 		jTextField1.setText(jTextField1.getText() + jButton6.getText());
 	}
 //"2"
 	private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
-		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
 		}
 		jTextField1.setText(jTextField1.getText() + jButton5.getText());
 	}
@@ -744,18 +716,12 @@ public class Calcu extends javax.swing.JFrame {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
-		}
 		jTextField1.setText(jTextField1.getText() + jButton4.getText());
 	}
 //"0"
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
 		if(hs_count) {
 			hs_count = false; jTextField1.setText(null);
-		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
 		}
 		jTextField1.setText(jTextField1.getText() + jButton1.getText());
 	}
