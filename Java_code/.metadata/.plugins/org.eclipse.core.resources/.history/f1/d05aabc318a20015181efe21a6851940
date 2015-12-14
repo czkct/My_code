@@ -12,11 +12,12 @@ import javax.swing.text.BadLocationException;
  */
 public class Calcu extends javax.swing.JFrame {
 	//flag 是按键标志变量   str1 是第一个运算数
+	//key是按键变量
 	int num1, num2;
 	boolean hs_count = false;//等于号的标志变量
 	String str1, str2;
-	boolean flag = false; //按键标志变量
-	String key = null;  //key是按键变量
+	boolean flag = false;
+	String key = null;
 
 	/** Creates new form Calcu */
 	public Calcu() {

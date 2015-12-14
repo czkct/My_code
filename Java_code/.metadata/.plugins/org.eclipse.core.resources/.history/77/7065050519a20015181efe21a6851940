@@ -592,6 +592,7 @@ public class Calcu extends javax.swing.JFrame {
 			num1 = Integer.parseInt(str1);
 		}
 		key = "÷";
+		flag = true;
 		jTextField1.setText("");
 	}
 	
