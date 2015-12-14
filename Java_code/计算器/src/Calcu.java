@@ -12,11 +12,15 @@ import javax.swing.text.BadLocationException;
  */
 public class Calcu extends javax.swing.JFrame {
 	//flag 是按键标志变量   str1 是第一个运算数
-	int num1, num2;
+	double num1, num2;
 	boolean hs_count = false;//等于号的标志变量
 	String str1, str2;
+	boolean point = false; //小数点的标志变量
 	boolean flag = false; //按键标志变量
-	String key = null;  //key是按键变量
+	String key = null; //key是按键变量
+
+	//小数的正则表达式：  "[0-9]+\.{1}[0-9]*"  -> regex
+	//方法public boolean matches(String regex)
 
 	/** Creates new form Calcu */
 	public Calcu() {
@@ -110,7 +114,7 @@ public class Calcu extends javax.swing.JFrame {
 			}
 		});
 
-		jButton7.setText("-");
+		jButton7.setText("\u2014");
 		jButton7.setFocusPainted(false);
 		jButton7.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +207,7 @@ public class Calcu extends javax.swing.JFrame {
 			}
 		});
 
-		jButton18.setText("\u00f7");
+		jButton18.setText("-");
 		jButton18.setFocusPainted(false);
 		jButton18.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,19 +362,23 @@ public class Calcu extends javax.swing.JFrame {
 														.addComponent(
 																jButton7,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
-																40,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
 																Short.MAX_VALUE)
 														.addComponent(
 																jButton11,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
-																40,
+																45,
 																Short.MAX_VALUE)
 														.addComponent(
 																jButton15,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
-																40,
+																45,
 																Short.MAX_VALUE)
-														.addComponent(jButton19))
+														.addComponent(
+																jButton19,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
+																45,
+																Short.MAX_VALUE))
 										.addPreferredGap(
 												javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 										.addComponent(jButton20)
@@ -387,12 +395,12 @@ public class Calcu extends javax.swing.JFrame {
 										.addGroup(
 												jPanel2Layout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.LEADING)
+																javax.swing.GroupLayout.Alignment.LEADING,
+																false)
 														.addComponent(
 																jButton20,
-																javax.swing.GroupLayout.Alignment.TRAILING,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
-																157,
+																javax.swing.GroupLayout.DEFAULT_SIZE,
 																Short.MAX_VALUE)
 														.addGroup(
 																javax.swing.GroupLayout.Alignment.TRAILING,
@@ -408,9 +416,9 @@ public class Calcu extends javax.swing.JFrame {
 																						.addComponent(
 																								jButton18)
 																						.addComponent(
-																								jButton19)
+																								jButton17)
 																						.addComponent(
-																								jButton17))
+																								jButton19))
 																		.addPreferredGap(
 																				javax.swing.LayoutStyle.ComponentPlacement.RELATED)
 																		.addGroup(
@@ -466,9 +474,12 @@ public class Calcu extends javax.swing.JFrame {
 																						.addComponent(
 																								jButton2)
 																						.addComponent(
-																								jButton3)
+																								jButton1)
 																						.addComponent(
-																								jButton1))))
+																								jButton3,
+																								javax.swing.GroupLayout.PREFERRED_SIZE,
+																								25,
+																								javax.swing.GroupLayout.PREFERRED_SIZE))))
 										.addContainerGap()));
 
 		jPanel3.setBackground(new java.awt.Color(220, 228, 231));
@@ -485,7 +496,7 @@ public class Calcu extends javax.swing.JFrame {
 						.createSequentialGroup()
 						.addContainerGap()
 						.addComponent(jTextField1,
-								javax.swing.GroupLayout.DEFAULT_SIZE, 249,
+								javax.swing.GroupLayout.DEFAULT_SIZE, 254,
 								Short.MAX_VALUE).addContainerGap()));
 		jPanel3Layout.setVerticalGroup(jPanel3Layout.createParallelGroup(
 				javax.swing.GroupLayout.Alignment.LEADING).addGroup(
@@ -578,184 +589,249 @@ public class Calcu extends javax.swing.JFrame {
 		pack();
 	}// </editor-fold>
 	//GEN-END:initComponents
-	
+
 	//"√"
 	private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {
 		key = "√";
 		flag = true;
 	}
-	
-	//"÷"
-	private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(jTextField1.getText()!=null){
-			str1 = jTextField1.getText();
-			num1 = Integer.parseInt(str1);
-		}
-		key = "÷";
-		flag = true;
-	}
-	
+
 	//"/"
 	private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(jTextField1.getText()!=null){
+		if (jTextField1.getText() != null) {
 			str1 = jTextField1.getText();
-			num1 = Integer.parseInt(str1);
+			num1 = Double.parseDouble(str1);
 		}
 		key = "/";
 		flag = true;
 	}
-	
+
 	//"+"
 	private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(jTextField1.getText()!=null){
+		if (jTextField1.getText() != null) {
 			str1 = jTextField1.getText();
-			num1 = Integer.parseInt(str1);
+			num1 = Double.parseDouble(str1);
 		}
 		key = "+";
 		flag = true;
 	}
-	
+
 	//"-"
 	private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(jTextField1.getText()!=null){
+		if (jTextField1.getText() != null) {
 			str1 = jTextField1.getText();
-			num1 = Integer.parseInt(str1);
+			num1 = Double.parseDouble(str1);
 		}
 		key = "-";
 		flag = true;
 	}
-	
+
 	//"*"
 	private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(jTextField1.getText()!=null){
+		if (jTextField1.getText() != null) {
 			str1 = jTextField1.getText();
-			num1 = Integer.parseInt(str1);
+			num1 = Double.parseDouble(str1);
 		}
 		key = "*";
 		flag = true;
 	}
-	
+
 	//"回退"
 	private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {
 		try {
-			if(!flag)
-			jTextField1.setText(jTextField1.getText(0, jTextField1.getText()
-					.length() - 1));
+			if (!flag)
+				jTextField1.setText(jTextField1.getText(0, jTextField1
+						.getText().length() - 1));
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
 	}
-//"."
+
+	//"."
 	private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		jTextField1.setText(jTextField1.getText() + jButton2.getText());
+		if ((!point) && (jTextField1.getText().length() != 0)) { //如果之前没有按过小数点  且  小数点前面有数字
+			jTextField1.setText(jTextField1.getText() + jButton2.getText());
+			point = true;
+		}
 	}
 
+	//"CE"
 	private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {
-		jTextField1.setText("");
+		jTextField1.setText(null);
 	}
-//"9"
-	private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+	//"-负号"
+		private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {
+			if (hs_count) {
+				hs_count = false;
+				jTextField1.setText(null);
+				point = false;
+			}
+			if (flag) {
+				flag = false;
+				jTextField1.setText(null);
+				point = false;
+			}
+			if(jTextField1.getText().length()==0) 
+				jTextField1.setText(jTextField1.getText() + jButton18.getText());
+			
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		
+	//"9"
+	private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
+		}
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton14.getText());
 	}
-//"8"
+
+	//"8"
 	private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton13.getText());
 	}
-//"7"
+
+	//"7"
 	private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton12.getText());
 	}
-//"6"
+
+	//"6"
 	private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton10.getText());
 	}
-//"5"
+
+	//"5"
 	private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton9.getText());
 	}
-//"4"
+
+	//"4"
 	private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton8.getText());
 	}
-//"3"
+
+	//"3"
 	private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton6.getText());
 	}
-//"2"
+
+	//"2"
 	private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton5.getText());
 	}
-//"1"
+
+	//"1"
 	private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton4.getText());
 	}
-//"0"
+
+	//"0"
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-		if(hs_count) {
-			hs_count = false; jTextField1.setText(null);
+		if (hs_count) {
+			hs_count = false;
+			jTextField1.setText(null);
+			point = false;
 		}
-		if(flag) {
-			flag = false; jTextField1.setText(null);
+		if (flag) {
+			flag = false;
+			jTextField1.setText(null);
+			point = false;
 		}
 		jTextField1.setText(jTextField1.getText() + jButton1.getText());
 	}
@@ -788,9 +864,8 @@ public class Calcu extends javax.swing.JFrame {
 			jTextField1.setText("error");
 		}
 		hs_count = true;
-		
-	}
 
+	}
 
 	private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {
 		// TODO add your handling code here:
