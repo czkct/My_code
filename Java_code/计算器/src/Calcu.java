@@ -507,46 +507,36 @@ public class Calcu extends javax.swing.JFrame {
 										.addGroup(
 												jPanel1Layout
 														.createParallelGroup(
-																javax.swing.GroupLayout.Alignment.TRAILING,
-																false)
+																javax.swing.GroupLayout.Alignment.LEADING)
 														.addComponent(
 																jPanel3,
-																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.Alignment.TRAILING,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																Short.MAX_VALUE)
 														.addComponent(
 																jPanel2,
-																javax.swing.GroupLayout.Alignment.LEADING,
+																javax.swing.GroupLayout.Alignment.TRAILING,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																javax.swing.GroupLayout.DEFAULT_SIZE,
 																Short.MAX_VALUE))
-										.addContainerGap(
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												Short.MAX_VALUE)));
-		jPanel1Layout
-				.setVerticalGroup(jPanel1Layout
-						.createParallelGroup(
-								javax.swing.GroupLayout.Alignment.LEADING)
-						.addGroup(
-								javax.swing.GroupLayout.Alignment.TRAILING,
-								jPanel1Layout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(
-												jPanel3,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
-										.addPreferredGap(
-												javax.swing.LayoutStyle.ComponentPlacement.RELATED,
-												18, Short.MAX_VALUE)
-										.addComponent(
-												jPanel2,
-												javax.swing.GroupLayout.PREFERRED_SIZE,
-												javax.swing.GroupLayout.DEFAULT_SIZE,
-												javax.swing.GroupLayout.PREFERRED_SIZE)
 										.addContainerGap()));
+		jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(
+				javax.swing.GroupLayout.Alignment.LEADING).addGroup(
+				jPanel1Layout
+						.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(jPanel3,
+								javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addGap(18, 18, 18)
+						.addComponent(jPanel2,
+								javax.swing.GroupLayout.PREFERRED_SIZE,
+								javax.swing.GroupLayout.DEFAULT_SIZE,
+								javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE,
+								Short.MAX_VALUE)));
 
 		jMenu1.setText("\u6587\u4ef6");
 		jMenuBar1.add(jMenu1);
@@ -676,11 +666,19 @@ public class Calcu extends javax.swing.JFrame {
 		str2 = jTextField1.getText();
 		num2 = Integer.parseInt(str2);
 		char[] a = key.toCharArray();
-		switch(a[0]){
-		case '+':jTextField1.setText(String.valueOf(num1+num2));
-		case '-':jTextField1.setText(String.valueOf(num1-num2));
-		case '*':jTextField1.setText(String.valueOf(num1*num2));
-		case '/':jTextField1.setText(String.valueOf(num1/num2));
+		switch (a[0]) {
+		case '+':
+			jTextField1.setText(String.valueOf(num1 + num2));
+			break;
+		case '-':
+			jTextField1.setText(String.valueOf(num1 - num2));
+			break;
+		case '*':
+			jTextField1.setText(String.valueOf(num1 * num2));
+			break;
+		case '/':
+			jTextField1.setText(String.valueOf(num1 / num2));
+			break;
 		//case "+":jTextField1.setText(String.valueOf(num1+num2));
 		}
 	}
